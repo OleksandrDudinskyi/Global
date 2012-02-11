@@ -1,0 +1,182 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_STACK_OVERFLOW (0xc00000fd) at pc=0x620440c7, pid=2480, tid=5740
+#
+# JRE version: 7.0_01-b08
+# Java VM: Java HotSpot(TM) Client VM (21.1-b02 mixed mode, sharing windows-x86 )
+# Problematic frame:
+# C  [lcbindnt_msvc90.dll+0xb40c7]
+#
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x004aa000):  JavaThread "main" [_thread_in_native, id=5740, stack(0x017a0000,0x017f0000)]
+
+siginfo: ExceptionCode=0xc00000fd, ExceptionInformation=0x00000000 0x017a0000 
+
+Registers:
+EAX=0x017a0000, EBX=0x04259f0c, ECX=0x01776b90, EDX=0x017df1dc
+ESP=0x017cef40, EBP=0x01776b94, ESI=0x04259f48, EDI=0x00000008
+EIP=0x620440c7, EFLAGS=0x00010206
+
+Top of Stack: (sp=0x017cef40)
+0x017cef40:   04259f48 62003922 017cef84 62004e91
+0x017cef50:   017df1dc 234c2490 017ef7e8 04259f48
+0x017cef60:   043a8c88 7334070e 0425a0b4 017df1dc
+0x017cef70:   04259f48 017cef54 017cf154 6204e686
+0x017cef80:   ffffffff 62056088 00000002 006f004d
+0x017cef90:   00390000 00320037 00610000 00680074
+0x017cefa0:   00000000 00000007 62056088 00000002
+0x017cefb0:   73340865 00590000 00000053 73262ab4 
+
+Instructions: (pc=0x620440c7)
+0x620440a7:   1b c0 f7 d0 23 c8 8b c4 25 00 f0 ff ff 3b c8 72
+0x620440b7:   0a 8b c1 59 94 8b 00 89 04 24 c3 2d 00 10 00 00
+0x620440c7:   85 00 eb e9 cc ff 25 34 53 05 62 ff 25 30 53 05
+0x620440d7:   62 cc cc cc cc cc cc cc cc 80 f9 40 73 16 80 f9 
+
+
+Register to memory mapping:
+
+EAX=0x017a0000 is an unknown value
+EBX=0x04259f0c is an unknown value
+ECX=0x01776b90 is an unknown value
+EDX=0x017df1dc is pointing into the stack for thread: 0x004aa000
+ESP=0x017cef40 is pointing into the stack for thread: 0x004aa000
+EBP=0x01776b94 is an unknown value
+ESI=0x04259f48 is an unknown value
+EDI=0x00000008 is an unknown value
+
+
+Stack: [0x017a0000,0x017f0000],  sp=0x017cef40,  free space=187k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [lcbindnt_msvc90.dll+0xb40c7]  InterSystemsLCB::Uni_conv::srv_mb_to_srv_uni+0xac7
+
+[error occurred during error reporting (printing native stack), id 0xc0000005]
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  com.intersys.globals.internal.GlobalsConnectionJNI.connectImpl(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V+0
+j  com.intersys.globals.internal.GlobalsConnectionJNI.connect(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V+61
+j  com.intersys.globals.impl.ConnectionImpl.connect(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V+7
+j  org.globalsdb.sample.keyvalue.Test.<init>(I)V+41
+j  org.globalsdb.sample.keyvalue.Test.main([Ljava/lang/String;)V+25
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x016eb000 JavaThread "Service Thread" daemon [_thread_blocked, id=5352, stack(0x03cc0000,0x03d10000)]
+  0x016d0800 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=1004, stack(0x03d40000,0x03d90000)]
+  0x016cac00 JavaThread "Attach Listener" daemon [_thread_blocked, id=4188, stack(0x03c00000,0x03c50000)]
+  0x016c7800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=5464, stack(0x03b80000,0x03bd0000)]
+  0x016bd400 JavaThread "Finalizer" daemon [_thread_blocked, id=6068, stack(0x03920000,0x03970000)]
+  0x016b8800 JavaThread "Reference Handler" daemon [_thread_blocked, id=4184, stack(0x03a70000,0x03ac0000)]
+=>0x004aa000 JavaThread "main" [_thread_in_native, id=5740, stack(0x017a0000,0x017f0000)]
+
+Other Threads:
+  0x016b7000 VMThread [stack: 0x039f0000,0x03a40000] [id=5900]
+  0x01704c00 WatcherThread [stack: 0x03e80000,0x03ed0000] [id=4308]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 19008K, used 5798K [0x239a0000, 0x24e30000, 0x28ef0000)
+  eden space 16960K,  34% used [0x239a0000, 0x23f49bf8, 0x24a30000)
+  from space 2048K,   0% used [0x24a30000, 0x24a30000, 0x24c30000)
+  to   space 2048K,   0% used [0x24c30000, 0x24c30000, 0x24e30000)
+ tenured generation   total 42048K, used 25227K [0x28ef0000, 0x2b800000, 0x339a0000)
+   the space 42048K,  59% used [0x28ef0000, 0x2a792c98, 0x2a792e00, 0x2b800000)
+ compacting perm gen  total 12288K, used 184K [0x339a0000, 0x345a0000, 0x379a0000)
+   the space 12288K,   1% used [0x339a0000, 0x339ce3f8, 0x339ce400, 0x345a0000)
+    ro space 10240K,  42% used [0x379a0000, 0x37ddc7b0, 0x37ddc800, 0x383a0000)
+    rw space 12288K,  53% used [0x383a0000, 0x38a18210, 0x38a18400, 0x38fa0000)
+
+Code Cache  [0x017f0000, 0x01868000, 0x037f0000)
+ total_blobs=170 nmethods=37 adapters=66 free_code_cache=32293Kb largest_free_block=33068416
+
+Dynamic libraries:
+0x000f0000 - 0x0011f000 	C:\Program Files\Java\jre7\bin\javaw.exe
+0x77a60000 - 0x77b9c000 	C:\Windows\SYSTEM32\ntdll.dll
+0x77580000 - 0x77654000 	C:\Windows\system32\kernel32.dll
+0x75c70000 - 0x75cba000 	C:\Windows\system32\KERNELBASE.dll
+0x766a0000 - 0x76740000 	C:\Windows\system32\ADVAPI32.dll
+0x77490000 - 0x7753c000 	C:\Windows\system32\msvcrt.dll
+0x75f50000 - 0x75f69000 	C:\Windows\SYSTEM32\sechost.dll
+0x76160000 - 0x76201000 	C:\Windows\system32\RPCRT4.dll
+0x773c0000 - 0x77489000 	C:\Windows\system32\USER32.dll
+0x77c40000 - 0x77c8e000 	C:\Windows\system32\GDI32.dll
+0x77c30000 - 0x77c3a000 	C:\Windows\system32\LPK.dll
+0x760c0000 - 0x7615d000 	C:\Windows\system32\USP10.dll
+0x74a20000 - 0x74bbe000 	C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_41e6975e2bd6f2b2\COMCTL32.dll
+0x75ef0000 - 0x75f47000 	C:\Windows\system32\SHLWAPI.dll
+0x76450000 - 0x7646f000 	C:\Windows\system32\IMM32.DLL
+0x75f70000 - 0x7603c000 	C:\Windows\system32\MSCTF.dll
+0x75ba0000 - 0x75bb6000 	C:\PROGRA~2\VKSaver\vksaver3.dll
+0x62ce0000 - 0x62d9e000 	C:\Program Files\Java\jre7\bin\msvcr100.dll
+0x5b5a0000 - 0x5b8c1000 	C:\Program Files\Java\jre7\bin\client\jvm.dll
+0x6f870000 - 0x6f877000 	C:\Windows\system32\WSOCK32.dll
+0x77540000 - 0x77575000 	C:\Windows\system32\WS2_32.dll
+0x77ba0000 - 0x77ba6000 	C:\Windows\system32\NSI.dll
+0x6f720000 - 0x6f752000 	C:\Windows\system32\WINMM.dll
+0x77bb0000 - 0x77bb5000 	C:\Windows\system32\PSAPI.DLL
+0x73c70000 - 0x73c7c000 	C:\Program Files\Java\jre7\bin\verify.dll
+0x6a220000 - 0x6a240000 	C:\Program Files\Java\jre7\bin\java.dll
+0x6a430000 - 0x6a443000 	C:\Program Files\Java\jre7\bin\zip.dll
+0x61da0000 - 0x61dfa000 	C:\Globals\bin\mdsjni.dll
+0x10000000 - 0x10451000 	C:\Globals\bin\cache.dll
+0x74250000 - 0x74261000 	C:\Windows\system32\NETAPI32.dll
+0x74240000 - 0x74249000 	C:\Windows\system32\netutils.dll
+0x75800000 - 0x75819000 	C:\Windows\system32\srvcli.dll
+0x74230000 - 0x7423f000 	C:\Windows\system32\wkscli.dll
+0x754d0000 - 0x754f2000 	C:\Windows\system32\LOGONCLI.DLL
+0x74100000 - 0x74151000 	C:\Windows\system32\WINSPOOL.DRV
+0x6e840000 - 0x6e87b000 	C:\Windows\system32\CLUSAPI.dll
+0x75900000 - 0x75911000 	C:\Windows\system32\cryptdll.dll
+0x6e820000 - 0x6e834000 	C:\Windows\system32\RESUTILS.dll
+0x73cb0000 - 0x73ccc000 	C:\Windows\system32\IPHLPAPI.DLL
+0x73ca0000 - 0x73ca7000 	C:\Windows\system32\WINNSI.DLL
+0x732d0000 - 0x73373000 	C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.6161_none_50934f2ebcb7eb57\MSVCR90.dll
+0x61f90000 - 0x62096000 	C:\Globals\bin\lcbindnt_msvc90.dll
+0x621b0000 - 0x6221c000 	C:\Globals\bin\lcbclientnt.dll
+0x74020000 - 0x740ae000 	C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.6161_none_50934f2ebcb7eb57\MSVCP90.dll
+0x61f70000 - 0x61f8b000 	C:\Globals\bin\lcbjni.dll
+0x6dc10000 - 0x6dcfb000 	C:\Windows\system32\dbghelp.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=Cp1251 
+java_command: org.globalsdb.sample.keyvalue.Test
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.7.0
+CLASSPATH=.;C:\Globals\dev\java\lib\JDK16\globalsdb.jar
+PATH=C:/Program Files/Java/jre7/bin/client;C:/Program Files/Java/jre7/bin;C:/Program Files/Java/jre7/lib/i386;C:\Program Files\PC Connectivity Solution\;C:\Inprise\vbroker\bin;C:\PROGRA~1\Borland\CBUILD~1\Bin;C:\PROGRA~1\Borland\CBUILD~1\Projects\Bpl;C:\Program Files\Borland\CaliberRM SDK 2005 R2\lib;C:\Program Files\Microsoft SQL Server\90\Tools\binn\;C:\Program Files\Far\Arc;C:\Program Files\Far\Mplayer;C:\Program Files\Far;C:\Windows;C:\Windows\system32;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Java\jdk1.7.0\bin;C:\Globals\bin;C:\Users\Public\Documents\RAD Studio\6.0\BPL;C:\Windows;C:\Windows\system32;E:\Job\3500\eclipse-java-indigo-SR1-win32\eclipse;
+USERNAME=Александер
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 15 Stepping 13, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 Build 7601 Service Pack 1
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 15 stepping 13, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3
+
+Memory: 4k page, physical 2088184k(580500k free), swap 4176368k(974880k free)
+
+vm_info: Java HotSpot(TM) Client VM (21.1-b02) for windows-x86 JRE (1.7.0_01-b08), built on Oct  3 2011 02:11:36 by "java_re" with unknown MS VC++:1600
+
+time: Mon Feb 06 20:06:58 2012
+elapsed time: 1 seconds
+
